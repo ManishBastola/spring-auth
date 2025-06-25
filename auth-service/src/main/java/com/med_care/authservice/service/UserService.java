@@ -1,7 +1,6 @@
 package com.med_care.authservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +11,7 @@ import com.med_care.authservice.DTO.RegisterRequest;
 import com.med_care.authservice.model.Role;
 import com.med_care.authservice.model.User;
 import com.med_care.authservice.repository.UserRepository;
-import com.med_care.jwt.JwtUtil;
-
+import com.med_care.authservice.security.JwtUtil;
 
 @Service
 public class UserService {
@@ -62,7 +60,7 @@ public class UserService {
 
 		User user = userRepository.findByUsername(request.getUsername())
 		        .orElseThrow(() -> new RuntimeException("Not found"));
-		String hashedPassword = passwordEncoder.encode(request.getPassword());
+		String hashedPassword = passwordEncoder.encode(request.getNewPassword());
 user.setPassword(hashedPassword);
 
 		return userRepository.save(user); 

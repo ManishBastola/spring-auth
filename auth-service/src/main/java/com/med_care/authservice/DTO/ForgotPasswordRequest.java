@@ -1,14 +1,13 @@
 package com.med_care.authservice.DTO;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ForgotPasswordRequest {
-
-	public String password; 
-	public String  username; 
-	
+    private String username;
+    private String newPassword;
 }
